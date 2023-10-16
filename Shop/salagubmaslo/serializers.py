@@ -46,6 +46,10 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['username'] = user.username
         return token
 
+class OilSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Oil
+        fields = "__all__"
 
 class qaSerializer(serializers.ModelSerializer):
     class Meta:

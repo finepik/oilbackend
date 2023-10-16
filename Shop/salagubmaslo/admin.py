@@ -1,3 +1,4 @@
 from django.contrib import admin
+from salagubmaslo.models import QA
 
-# Register your models here.
+admin.site.register(QA)

@@ -31,7 +31,14 @@ class LogoutView(APIView):
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-class qaAPIView(APIView):
+
+class OilProductAPIView(APIView):
+    def get(self, request):
+        products = Oil.objects.filter(volume=self.request.query_params.get('volume'))
+        return Response({'products': OilSerializer(products, many=True).data})
+
+
+class QaAPIView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
