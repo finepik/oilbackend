@@ -21,13 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--f!nbi(ya3fp&*wqkr4ur0tea!rk_&1(n4_)(!$&s5vh=h_8x+'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure--f!nbi(ya3fp&*wqkr4ur0tea!rk_&1(n4_)(!$&s5vh=h_8x+')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOSTS', default="*")]
 
 # Application definition
 
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'salagubmaslo.apps.SalagubmasloConfig',
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'Shop.urls'
@@ -178,3 +179,6 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:8081', 'http://looparadise.ru', 'https://127.0.0.1:8081',
+                        'https://looparadise.ru', "http://localhost:3001", "https://31.172.67.174:8081", "http://localhost:3000", 'http://94.241.170.183']
