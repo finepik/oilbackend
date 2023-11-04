@@ -33,5 +33,5 @@ jobs:
             StrictHostKeyChecking no
           END
       - name: Run deploy
-        run: ssh target "cd Shop/Shop && docker compose down && git pull && docker compose build && docker compose up -d --force-recreate"
+        run: ssh target "cd Shop && docker compose down && git pull && docker compose build && docker compose up -d --force-recreate"
         #"cd test_deploy/ && docker compose down && git pull && docker compose build && docker compose up -d --force-recreate"
