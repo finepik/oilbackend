@@ -16,3 +16,5 @@ openpyxl
 pandas==1.5.3
 numpy
 loguru
+rest_framework_simplejwt
+django_summernote
