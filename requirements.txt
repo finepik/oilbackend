@@ -8,5 +8,6 @@ asyncio==3.4.3
 requests==2.28.1
 pygsheets==2.0.6
 openpyxl
-rest_framework_simplejwt
+djangorestframework-simplejwt
 django_summernote
+Pillow
