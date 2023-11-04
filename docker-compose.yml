@@ -3,7 +3,7 @@ services:
 
   oilBack:
     restart: always
-    container_name: "back"
+    container_name: "oilBack"
     build:
       context: .
       dockerfile: Dockerfile
