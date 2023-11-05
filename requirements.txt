@@ -11,3 +11,4 @@ openpyxl
 djangorestframework-simplejwt
 django_summernote
 Pillow
+psycopg2-binary

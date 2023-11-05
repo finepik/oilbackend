@@ -12,8 +12,19 @@ services:
       - 8000:8000
     env_file:
       - ./.env_back
+  
+  db:
+    restart: on-failure
+    container_name: "oildb"
+    image: postgres:14.4-alpine
     volumes:
-      - my-datavolume: /usr/src/app/Shop/db.sqlite3
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=oil
+      - POSTGRES_PASSWORD=GY6GKb7S
+      - POSTGRES_DB=oil
 
 volumes:
-  my-datavolume:
+  postgres_data:
