@@ -187,5 +187,6 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
 
-CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:8081', 'http://looparadise.ru', 'https://127.0.0.1:8081',
-                        'https://looparadise.ru', "http://localhost:3001", "https://31.172.67.174:8081", "http://localhost:3000", 'http://94.241.170.183']
+CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:8081', 'http://salagupmaslo.ru', 'https://127.0.0.1:8081','https://salagupmaslo.ru', 
+                        "http://localhost:3001", "https://31.172.67.174:8081", "http://localhost:3000", 
+                        'http://94.241.170.183', 'https://oil-frontend-six.vercel.app/', 'http://oil-frontend-six.vercel.app/']
