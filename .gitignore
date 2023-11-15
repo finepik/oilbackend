@@ -105,6 +105,7 @@ venv/
 ENV/ 
 env.bak/ 
 venv.bak/ 
+.env_back
 
 # mkdocs documentation 
 /site 
@@ -129,3 +130,6 @@ Control.ca-bundle
 Control.system-ca-bundle 
 GitHub.sublime-settings 
 .idea/vcs.xml
+
+postgres_data
+docker-compose.yml
