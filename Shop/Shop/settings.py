@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -128,8 +129,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATIC_ROOT = './staticfiles'
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -190,4 +191,8 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:8081', 'http://salagupmaslo.ru', 'https://127.0.0.1:8081','https://salagupmaslo.ru', 
                         "http://localhost:3001", "https://31.172.67.174:8081", "http://localhost:3000", 
                         'http://94.241.170.183', 'https://oil-frontend-six.vercel.app', 'http://oil-frontend-six.vercel.app',
+<<<<<<< HEAD
                         'https://94.241.170.183']
+=======
+                        ]
+>>>>>>> 694debce49b2f6d33cf81e372740e5145997b9e0
