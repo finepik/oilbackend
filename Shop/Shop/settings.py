@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure--f!nbi(ya3fp&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOSTS', default="*")]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -128,8 +128,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = 'static/'
+STATIC_ROOT = './staticfiles'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -190,4 +190,4 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:8081', 'http://salagupmaslo.ru', 'https://127.0.0.1:8081','https://salagupmaslo.ru', 
                         "http://localhost:3001", "https://31.172.67.174:8081", "http://localhost:3000", 
                         'http://94.241.170.183', 'https://oil-frontend-six.vercel.app', 'http://oil-frontend-six.vercel.app',
-                        ]
+                        'https://94.241.170.183']
