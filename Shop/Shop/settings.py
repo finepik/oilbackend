@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOSTS', default="*")]
 
-CSRF_TRUSTED_ORIGINS=["https://salagupmaslo.ru", "http://salagupmaslo.ru"]
 
 # Application definition
 
