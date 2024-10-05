@@ -2,8 +2,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView
-
-from .cart.views import UserProductAPIView
 from .views import *
 
 urlpatterns = [
@@ -19,7 +17,6 @@ urlpatterns = [
     path('equipment_press_products/<int:pk>/', EquipmentPressProductAPIView.as_view()),
     path('equipment_supplement_products/', EquipmentSupplementCatalogAPIView.as_view()),
     path('equipment_supplement_products/<int:pk>/', EquipmentSupplementProductAPIView.as_view()),
-    path('products/', UserProductAPIView.as_view()),
     path('question_answer/', QaAPIView.as_view()),
     path('summernote/', include('django_summernote.urls')),
 ]
