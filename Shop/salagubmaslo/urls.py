@@ -17,7 +17,7 @@ urlpatterns = [
     path('equipment_press_products/<int:pk>/', EquipmentPressProductAPIView.as_view()),
     path('equipment_supplement_products/', EquipmentSupplementCatalogAPIView.as_view()),
     path('equipment_supplement_products/<int:pk>/', EquipmentSupplementProductAPIView.as_view()),
-    path('question_answer/', QaAPIView.as_view()),
+    path('question_answer/', QAAPIView.as_view()),
     path('summernote/', include('django_summernote.urls')),
 ]
 

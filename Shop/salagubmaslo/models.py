@@ -8,6 +8,7 @@ class OilImage(models.Model):
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name_plural = 'Изображения масел'
 
@@ -30,6 +31,7 @@ class Oil(models.Model):
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name_plural = 'Масла'
 
@@ -41,6 +43,7 @@ class OilMealImage(models.Model):
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name_plural = 'Изображения жмыхов'
 
@@ -48,9 +51,9 @@ class OilMealImage(models.Model):
 class OilMeal(models.Model):
     title = models.CharField(max_length=1000, verbose_name="Название жмыха")
     sub_title = models.CharField(max_length=1000, null=True, blank=True, verbose_name="Краткое описание")
-    volume = models.IntegerField( verbose_name="Объем")
+    volume = models.IntegerField(verbose_name="Объем")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена")
-    discount = models.IntegerField( verbose_name="Скидка в %")
+    discount = models.IntegerField(verbose_name="Скидка в %")
     description = models.TextField(max_length=5000, null=True, blank=True, verbose_name="Описание")
     in_cooking = models.TextField(max_length=5000, null=True, blank=True, verbose_name="В кулинарии")
     in_cosmetology = models.TextField(max_length=5000, null=True, blank=True, verbose_name="В косметологии")
@@ -64,25 +67,31 @@ class OilMeal(models.Model):
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name_plural = 'Жмых'
 
 
 class EquipmentPressImage(models.Model):
     title = models.CharField(max_length=1000, verbose_name="Название фото")
-    image = models.ImageField(upload_to="photos/equipment_press_photos/", blank=True, null=True, verbose_name="Фото пресса")
+    image = models.ImageField(upload_to="photos/equipment_press_photos/", blank=True, null=True,
+                              verbose_name="Фото пресса")
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name_plural = 'Изображения прессов'
 
+
 class EquipmentPressComposition(models.Model):
     title = models.CharField(max_length=1000, verbose_name="Название модуля")
-    image = models.ImageField(upload_to="photos/equipment_press_composition_photos/", blank=True, null=True, verbose_name="Фото модуля")
+    image = models.ImageField(upload_to="photos/equipment_press_composition_photos/", blank=True, null=True,
+                              verbose_name="Фото модуля")
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name_plural = 'Изображения комплектации прессов'
 
@@ -91,7 +100,7 @@ class EquipmentPress(models.Model):
     title = models.CharField(max_length=1000, verbose_name="Название пресса")
     sub_title = models.TextField(max_length=5000, null=True, blank=True, verbose_name="Краткое описание")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="цена")
-    discount = models.IntegerField( verbose_name="Скидка в %")
+    discount = models.IntegerField(verbose_name="Скидка в %")
     video_link = models.SlugField(null=True, blank=True, verbose_name="Ссылка на видео о прессе")
     equipment_press_catalog_image = models.ImageField(upload_to="photos/equipment_press_photos/catalog/",
                                                       blank=True, null=True, verbose_name="Фото для каталога")
@@ -103,16 +112,19 @@ class EquipmentPress(models.Model):
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name_plural = 'Прессы'
 
 
 class EquipmentSupplementImage(models.Model):
     title = models.CharField(max_length=1000, verbose_name="Название фото")
-    image = models.ImageField(upload_to="photos/equipment_supplement_photos/", blank=True, null=True, verbose_name="Фото")
+    image = models.ImageField(upload_to="photos/equipment_supplement_photos/", blank=True, null=True,
+                              verbose_name="Фото")
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name_plural = 'Изображения дополнений'
 
@@ -127,7 +139,8 @@ class EquipmentSupplement(models.Model):
                                                            blank=True, null=True, verbose_name="Фото для каталога")
 
     equipment_supplement_construct_image = models.ImageField(upload_to="photos/equipment_supplement_photos/construct/",
-                                                             blank=True, null=True, verbose_name="Фото конструкции дополнения")
+                                                             blank=True, null=True,
+                                                             verbose_name="Фото конструкции дополнения")
     equipment_supplement_construct = models.TextField(max_length=5000, null=True, blank=True)
     equipment_supplement_image = models.ManyToManyField(EquipmentSupplementImage,
                                                         related_name="equipment_supplement_images",
@@ -135,6 +148,7 @@ class EquipmentSupplement(models.Model):
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name_plural = 'Дополнения'
 
@@ -145,5 +159,6 @@ class QA(models.Model):
 
     def __str__(self):
         return self.question
+
     class Meta:
         verbose_name_plural = 'Вопросы и ответы '

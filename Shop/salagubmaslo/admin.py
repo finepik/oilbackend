@@ -3,10 +3,12 @@ from django_summernote.admin import SummernoteModelAdmin
 
 from salagubmaslo.models import *
 
+
 class SummerAdmin(SummernoteModelAdmin):
     summernote_fields = '__all__'
 
-admin.site.register(QA,SummerAdmin)
+
+admin.site.register(QA, SummerAdmin)
 admin.site.register(Oil, SummerAdmin)
 admin.site.register(OilMeal, SummerAdmin)
 admin.site.register(EquipmentPress, SummerAdmin)

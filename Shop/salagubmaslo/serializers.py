@@ -38,6 +38,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         return user
 
+
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
@@ -46,13 +47,16 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['username'] = user.username
         return token
 
+
 class OilImageSerializer(serializers.ModelSerializer):
-    # image_url = serializers.SerializerMethodField('get_image_url')
     class Meta:
         model = OilImage
         fields = ("id", "title", "image")
+
     def get_image_url(self, obj):
         return obj.image.url
+
+
 class OilSerializer(serializers.ModelSerializer):
     oil_image = OilImageSerializer(many=True)
 
@@ -63,17 +67,16 @@ class OilSerializer(serializers.ModelSerializer):
 
 
 class OilCatalogSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Oil
         fields = ("id", "title", "price", "oil_catalog_image")
 
 
 class OilMealImageSerializer(serializers.ModelSerializer):
-    # image_url = serializers.SerializerMethodField('get_image_url')
     class Meta:
         model = OilMealImage
         fields = ("id", "title", "image")
+
     def get_image_url(self, obj):
         return obj.image.url
 
@@ -89,26 +92,25 @@ class OilMealSerializer(serializers.ModelSerializer):
 
 
 class OilMealCatalogSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = OilMeal
         fields = ("id", "title", "price", "oil_meal_catalog_image")
 
 
 class EquipmentPressImageSerializer(serializers.ModelSerializer):
-    # image_url = serializers.SerializerMethodField('get_image_url')
     class Meta:
         model = EquipmentPressImage
         fields = ("id", "title", "image")
+
     def get_image_url(self, obj):
         return obj.image.url
 
 
 class EquipmentPressCompositionSerializer(serializers.ModelSerializer):
-    # image_url = serializers.SerializerMethodField('get_image_url')
     class Meta:
         model = EquipmentPressComposition
         fields = ("id", "title", "image")
+
     def get_image_url(self, obj):
         return obj.image.url
 
@@ -124,17 +126,16 @@ class EquipmentPressSerializer(serializers.ModelSerializer):
 
 
 class EquipmentPressCatalogSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = EquipmentPress
         fields = ("id", "title", "price", "equipment_press_catalog_image")
 
 
 class EquipmentSupplementImageSerializer(serializers.ModelSerializer):
-    # image_url = serializers.SerializerMethodField('get_image_url')
     class Meta:
         model = EquipmentSupplementImage
         fields = ("id", "title", "image")
+
     def get_image_url(self, obj):
         return obj.image.url
 
@@ -149,13 +150,12 @@ class EquipmentSupplementSerializer(serializers.ModelSerializer):
 
 
 class EquipmentSupplementCatalogSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = EquipmentSupplement
         fields = ("id", "title", "price", "equipment_supplement_catalog_image")
 
 
-class qaSerializer(serializers.ModelSerializer):
+class QASerializer(serializers.ModelSerializer):
     class Meta:
         model = QA
         fields = "__all__"

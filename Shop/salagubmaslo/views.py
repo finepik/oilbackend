@@ -1,23 +1,23 @@
-from django.shortcuts import render
 from rest_framework import generics, status
-from rest_framework.generics import ListAPIView
-from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
 from .models import *
 from .serializers import *
+
 
 class MyObtainTokenPairView(TokenObtainPairView):
     permission_classes = (AllowAny,)
     serializer_class = MyTokenObtainPairSerializer
 
+
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
+
 
 class LogoutView(APIView):
     permission_classes = (IsAuthenticated,)
@@ -31,6 +31,7 @@ class LogoutView(APIView):
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 class OilCatalogAPIView(APIView):
     def get(self, request):
@@ -47,37 +48,34 @@ class OilCatalogAPIView(APIView):
         data = OilCatalogSerializer(data, many=True).data
         return Response({'oil_products': data})
 
-class OilProductAPIView(APIView):
-    # permission_classes = (IsAuthenticated,)
 
+class OilProductAPIView(APIView):
     def get(self, request, *args, **kwargs):
         pk = kwargs.get("pk", None)
         if not pk:
             return Response({"error": "Method GET not allowed"})
 
         try:
-            # конкретная запись в таблице
             product = Oil.objects.get(pk=pk)
         except:
             return Response({"error": "Method GET not allowed"})
 
         return Response({"oil_product": OilSerializer(product).data})
 
-class OilMealProductAPIView(APIView):
-    # permission_classes = (IsAuthenticated,)
 
+class OilMealProductAPIView(APIView):
     def get(self, request, *args, **kwargs):
         pk = kwargs.get("pk", None)
         if not pk:
             return Response({"error": "Method GET not allowed"})
 
         try:
-            # конкретная запись в таблице
             product = OilMeal.objects.get(pk=pk)
         except:
             return Response({"error": "Method GET not allowed"})
 
         return Response({"oil_meal_product": OilMealSerializer(product).data})
+
 
 class OilMealCatalogAPIView(APIView):
     def get(self, request):
@@ -103,7 +101,6 @@ class EquipmentPressProductAPIView(APIView):
             return Response({"error": "Method GET not allowed"})
 
         try:
-            # конкретная запись в таблице
             product = EquipmentPress.objects.get(pk=pk)
         except:
             return Response({"error": "Method GET not allowed"})
@@ -114,12 +111,13 @@ class EquipmentPressProductAPIView(APIView):
 class EquipmentPressCatalogAPIView(APIView):
     def get(self, request):
         sort = self.request.query_params.get('sort_price', None)
+        #  custom filter for future
         # start = self.request.query_params.get('start_price', None)
         # stop = self.request.query_params.get('stop_price', None)
         # from-to sort
         # if (not start is None) and (not stop is None):
-        #     data = EquipmentPressCatalogSerializer(EquipmentPress.objects.filter(price__lte=stop).filter(price__gte=start),
-        #                                            many=True).data
+        # data = EquipmentPressCatalogSerializer(
+        #     EquipmentPress.objects.filter(price__lte=stop).filter(price__gte=start),many=True).data
         # elif not start is None:
         #     data = EquipmentPressCatalogSerializer(
         #         EquipmentPress.objects.filter(price__gte=start), many=True).data
@@ -132,20 +130,17 @@ class EquipmentPressCatalogAPIView(APIView):
             data = EquipmentPressCatalogSerializer(EquipmentPress.objects.order_by('-price'), many=True).data
         else:
             data = EquipmentPressCatalogSerializer(EquipmentPress.objects.all(), many=True).data
+
         return Response({'equipment_press_products': data})
 
 
-
 class EquipmentSupplementProductAPIView(APIView):
-    # permission_classes = (IsAuthenticated,)
-
     def get(self, request, *args, **kwargs):
         pk = kwargs.get("pk", None)
         if not pk:
             return Response({"error": "Method GET not allowed"})
 
         try:
-            # конкретная запись в таблице
             product = EquipmentSupplement.objects.get(pk=pk)
         except:
             return Response({"error": "Method GET not allowed"})
@@ -164,9 +159,9 @@ class EquipmentSupplementCatalogAPIView(APIView):
             data = EquipmentSupplementCatalogSerializer(EquipmentSupplement.objects.all(), many=True).data
         return Response({'equipment_supplement_products': data})
 
-class QaAPIView(APIView):
-    # permission_classes = (IsAuthenticated,)
+
+class QAAPIView(APIView):
 
     def get(self, request):
         all_answers = QA.objects.all()
-        return Response({'answers': qaSerializer(all_answers, many=True).data})
+        return Response({'answers': QASerializer(all_answers, many=True).data})
